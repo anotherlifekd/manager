@@ -26,18 +26,13 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         print('User count', User.objects.count())
         print('hello from custom command')
-        # User.objects.exclude(is_superuser=True).delete()
-        # for i in range(10_000):
-        #     user = User.objects.create(
-        #         username=str(names.get_full_name() + names.get_full_name()),
-        #         first_name=names.get_first_name(),
-        #         last_name=names.get_last_name(),
-        #         email=generate_random_emails(),
-        #         age=random.randint(18, 60),
-        #         password=get_one_random_name(letters),
-        #     )
-        #     if user1 in User.objects.all():
-        #         continue
-        #     user1 = User.objects.create(
-        #         username=names.get_full_name()
-        #     )
+        User.objects.exclude(is_superuser=True).delete()
+        for i in range(10_000):
+            user = User.objects.create(
+                username=str(names.get_full_name() + names.get_full_name()),
+                first_name=names.get_first_name(),
+                last_name=names.get_last_name(),
+                email=generate_random_emails(),
+                age=random.randint(18, 60),
+                password=get_one_random_name(letters),
+            )
