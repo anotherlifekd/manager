@@ -6,7 +6,7 @@ import string
 
 
 # generate random emails
-domains = [ "hotmail.com", "gmail.com", "mail.com" , "mail.ru", "yahoo.com", "yandex.ru", "ukr.net"]
+domains = ["hotmail.com", "gmail.com", "mail.com" , "mail.ru", "yahoo.com", "yandex.ru", "ukr.net"]
 letters = string.ascii_lowercase[:12]
 
 def get_one_random_domain(domains):
