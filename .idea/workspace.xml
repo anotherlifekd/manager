@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="036a6378-ddb2-4931-a233-5e672a2e96c7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parse_workua/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/parse_workua/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movies/cinema.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/movies/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/apps/account/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/apps/account/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/apps/account/management/commands/create_test_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/apps/account/management/commands/create_test_data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/apps/account/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/apps/account/models.py" afterDir="false" />
@@ -19,8 +19,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/parse_workua/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="552">
-              <caret line="43" column="31" lean-forward="true" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="70" />
+            <state relative-caret-position="600">
+              <caret line="25" column="65" selection-start-line="25" selection-start-column="65" selection-end-line="25" selection-end-column="80" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -31,10 +31,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/movies/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1752">
-              <caret line="73" column="11" lean-forward="true" selection-start-line="73" selection-start-column="11" selection-end-line="73" selection-end-column="11" />
+            <state relative-caret-position="144">
+              <caret line="33" column="10" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="10" />
               <folding>
-                <element signature="e#0#25#0" expanded="true" />
+                <element signature="e#0#13#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -265,8 +265,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/parse_workua/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="43" column="31" lean-forward="true" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="70" />
+        <state relative-caret-position="600">
+          <caret line="25" column="65" selection-start-line="25" selection-start-column="65" selection-end-line="25" selection-end-column="80" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
           </folding>
@@ -275,10 +275,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/movies/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1752">
-          <caret line="73" column="11" lean-forward="true" selection-start-line="73" selection-start-column="11" selection-end-line="73" selection-end-column="11" />
+        <state relative-caret-position="144">
+          <caret line="33" column="10" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="10" />
           <folding>
-            <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>

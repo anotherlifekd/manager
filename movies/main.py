@@ -1,15 +1,24 @@
-from pdb import set_trace
 import random
 import requests
 from bs4 import BeautifulSoup
+from fake_useragent import UserAgent
+from time import sleep
 
 ROOT_URL = 'https://ua.kinorium.com/movies/cinema/'
 MOVIES_URL = 'https://ua.kinorium.com'
 MOVIES_LIST_URL = []
 
+def random_sleep():
+    sleep(random.randint(1, 3))
+
+useragent = UserAgent()
+
 with open('./cinema.txt', 'w') as file:
-    response = requests.get(ROOT_URL)
-    # random_sleep()
+    headers = {
+        'User-Agent': useragent.random,
+    }
+    response = requests.get(ROOT_URL, headers=headers)
+    random_sleep()
     assert response.status_code == 200
     html_doc = response.text
     soup = BeautifulSoup(html_doc, 'html.parser')
@@ -20,7 +29,8 @@ with open('./cinema.txt', 'w') as file:
         MOVIES_LIST_URL.append(href)
 
     for film_url in MOVIES_LIST_URL:
-        film = requests.get(MOVIES_URL + film_url)
+        film = requests.get(MOVIES_URL + film_url, headers=headers)
+        random_sleep()
         html_doc_film = film.text
         soup_film = BeautifulSoup(html_doc_film, 'html.parser')
 
@@ -67,8 +77,3 @@ with open('./cinema.txt', 'w') as file:
         file.write(f'Назва фільму: {film_name}\nрік: {film_year}\nкраїна: {country_list}\n'
                    f'тривалість: {duration}\nбюджет: {film_budget}\nIMDb: {imdb}\nжанр: {genre_list}\n'
                    f'опис: {description}\nurl: https://ua.kinorium.com{film_url}\n\n\n')
-        # print(film_url)
-        #print(film_name, film_year, *country_list, imdb, *genre_list, duration, film_budget, description)
-
-
-set_trace()
