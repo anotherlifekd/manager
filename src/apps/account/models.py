@@ -4,4 +4,27 @@ from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
     age = models.PositiveSmallIntegerField(null=True, blank=True)  # TODO validate age >= 18
-    phone = models.BigIntegerField(null=True, blank=True)
+    phone = models.CharField(max_length=16, null=True, blank=True)
+    address = models.CharField(max_length=256, blank=True)
+    salary = models.DecimalField(max_digits=8, decimal_places=2)
+    city = models.ForeignKey('account.City', on_delete=models.SET_NULL, null=True, blank=True, related_name='users')
+
+class City(models.Model):
+    name = models.CharField(max_length=64, unique=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = 'Cities'
+
+class ContactUs(models.Model):
+    email = models.EmailField('email address')
+    title = models.CharField(max_length=128)
+    text = models.TextField()
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name_plural = 'Contact-us'

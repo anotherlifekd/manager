@@ -3,6 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 from fake_useragent import UserAgent
 from time import sleep
+#from pdb import set_trace
 
 ROOT_URL = 'https://ua.kinorium.com/movies/cinema/'
 MOVIES_URL = 'https://ua.kinorium.com'
@@ -70,10 +71,11 @@ with open('./cinema.txt', 'w') as file:
                 budget = str(col.text)
                 if budget.startswith(' $'):
                     film_budget = budget
-
+        k = ', '.join(country_list)
+        b = ', '.join(genre_list)
         #Description
         description = soup_film.find('div', {'class': 'film-page__text'}).text
 
-        file.write(f'Назва фільму: {film_name}\nрік: {film_year}\nкраїна: {country_list}\n'
-                   f'тривалість: {duration}\nбюджет: {film_budget}\nIMDb: {imdb}\nжанр: {genre_list}\n'
-                   f'опис: {description}\nurl: https://ua.kinorium.com{film_url}\n\n\n')
+        file.write(f'Назва фільму: {film_name}\nрік: {film_year}\nкраїна: {k}\n'
+                   f'тривалість: {duration}\nбюджет: {film_budget}\nIMDb: {imdb}\nжанр: {b}\n'
+                   f'опис: {description}\nurl:  https://ua.kinorium.com{film_url}\n\n\n')

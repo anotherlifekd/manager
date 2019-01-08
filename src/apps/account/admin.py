@@ -1,6 +1,9 @@
 from django.contrib import admin
-from apps.account.models import User
+from apps.account.models import User, City, ContactUs
 
+@admin.register(City)
+class CityAdmin(admin.ModelAdmin):
+    pass
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
@@ -24,3 +27,12 @@ class UserAdmin(admin.ModelAdmin):
         if not request.user.is_superuser:
             return qs.exclude(is_superuser=True)
         return qs
+
+@admin.register(ContactUs)
+class ContactUsAdmin(admin.ModelAdmin):
+    readonly_fields = [
+        'title', 'email', 'text',
+    ]
+
+    def has_delete_permission(self, request, obj=None):
+        return False
