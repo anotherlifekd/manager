@@ -1,8 +1,9 @@
 from django.http import HttpResponse, Http404
-from apps.account.models import User, ContactUs
+from apps.account.models import User, ContactUs, RequestDayOffs
 from django.shortcuts import get_object_or_404, render, redirect
-from apps.account.forms import ProfileForm, ContactUsForm
+from apps.account.forms import ProfileForm, ContactUsForm, RequestDayOffsForm
 from django.urls import reverse
+#from pdb import set_trace
 
 #smtp google email
 from django.core.mail import send_mail
@@ -25,8 +26,7 @@ def index(request):
     return HttpResponse('Hello')
 
 def profile(request, id):
-
-    with open('./users_log.txt', 'w') as file:
+    with open('./users_log.txt', 'a') as file:
         ip = request.META.get('REMOTE_ADDR')
         device = request.META.get('HTTP_USER_AGENT')
         file.write(f'{ip}\n{device}\n\n')
@@ -50,7 +50,7 @@ def profile(request, id):
     elif request.method == "POST":
         form = ProfileForm(request.POST, instance=user)
         if form.is_valid():
-            form.save(ContactUs.title, ContactUs.text, 'bobertestdjango@gmail.com', [ContactUs.email, ])
+            form.save()
             return redirect(reverse('account:index'))
 
     context = {'form': form, 'user': user}
@@ -78,3 +78,19 @@ def faq(request):
 
 def tos(request):
     return render(request, 'tos/tos.html')
+
+def request_day_offs(request, id):
+    form_request = RequestDayOffsForm()
+    if request.method == "GET":
+        form_request = RequestDayOffsForm()
+    elif request.method == "POST":
+        form_request = RequestDayOffsForm(request.POST)
+        if form_request.is_valid():
+            form_request.save()
+            user_id = RequestDayOffs.objects.last()
+            user_id.user = id
+            user_id.save()
+            #return redirect(reverse('account:index'))
+
+    context_us = {'form': form_request}
+    return render(request, 'form-request/form-request.html', context=context_us)

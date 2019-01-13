@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from datetime import date
 
 
 class User(AbstractUser):
@@ -28,3 +29,21 @@ class ContactUs(models.Model):
 
     class Meta:
         verbose_name_plural = 'Contact-us'
+
+class RequestDayOffs(models.Model):
+    from_date = models.DateField(("From date"), default=date.today)
+    to_date = models.DateField(("To date"), default=date.today)
+    REASON_CHOICES = (
+        ('Vacation', 'Vacation'),
+        ('Disease', 'Disease'),
+        ('At own expense', 'At own expense'),
+    )
+    LOCATOR_YES_NO_CHOICES = ((None, ''), (True, 'Confirmed'), (False, 'Rejected'))
+    confirmed = models.NullBooleanField(choices=LOCATOR_YES_NO_CHOICES,
+                                max_length=3,
+                                blank=True, null=True, default=None,)
+    reason = models.CharField(max_length=20, choices=REASON_CHOICES)
+    user = models.IntegerField(null=True, blank=True)
+
+    class Meta:
+        verbose_name_plural = 'Request day offs'

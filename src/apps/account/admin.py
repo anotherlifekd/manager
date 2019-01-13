@@ -1,5 +1,6 @@
 from django.contrib import admin
-from apps.account.models import User, City, ContactUs
+from apps.account.models import User, City, ContactUs, RequestDayOffs
+from django.contrib.auth.models import Group
 
 @admin.register(City)
 class CityAdmin(admin.ModelAdmin):
@@ -8,8 +9,8 @@ class CityAdmin(admin.ModelAdmin):
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
     readonly_fields = [
-        'username', 'last_login',
-        'date_joined', 'password',
+        'last_login',
+        'date_joined',
         'phone',
     ]
     list_display = ['id', 'username', 'email', 'age']
@@ -34,5 +35,16 @@ class ContactUsAdmin(admin.ModelAdmin):
         'title', 'email', 'text',
     ]
 
-    def has_delete_permission(self, request, obj=None):
-        return False
+
+@admin.register(RequestDayOffs)
+class RequestDayOffsAdmin(admin.ModelAdmin):
+    readonly_fields = [
+        'user',
+    ]
+
+    list_display = ['user', 'from_date', 'to_date', 'reason', 'confirmed']
+
+    # def get_queryset(self, request):
+    #     qs = super().get_queryset(request)
+    #     if request.group.name:
+    #         return qs.exclude(name='test')
